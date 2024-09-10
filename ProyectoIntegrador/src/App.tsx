@@ -7,6 +7,12 @@ import QuienesSomos from "./Front/LandinPage/QuienesSomos";
 import Servicios from "./Front/Servicios/Servicios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Login from "./Front/Login/Login";
+import Historial from "./Front/VistasUsuario/Historial";
+import Agenda from "./Front/VistasUsuario/Agenda";
+import ProgramarCita from "./Front/VistasUsuario/ProgramarCita";
+import Horarios from "./Front/VistasUsuario/Horarios";
+import HistoriaClinica from "./Front/VistasDoctor/Historia Clinica/HistoriaClinica";
 
 
 
@@ -19,6 +25,12 @@ const App = () => {
         <Route path="/factura" element={<Factura />} />
         <Route path="/quienes-somos" element={<QuienesSomos />} /> {/* Nueva ruta para QuienesSomos */}
         <Route path="/servicios" element={<Servicios />} /> {/* Nueva ruta para QuienesSomos */}
+        <Route path="/login" element={<Login />} /> {/* Nueva ruta para QuienesSomos */}
+        <Route path="/historial-usuario" element={<Historial />} /> 
+        <Route path="/agenda-usuario" element={<Agenda />} /> 
+        <Route path="/programar-cita-usuario" element={<ProgramarCita />} /> 
+        <Route path="/horarios-usuario" element={<Horarios />} /> 
+        <Route path="/historia-usuario" element={<HistoriaClinica />} /> 
       </Routes>
     </Router>
   );
