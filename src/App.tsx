@@ -13,6 +13,9 @@ import Agenda from "./Front/VistasUsuario/Agenda";
 import ProgramarCita from "./Front/VistasUsuario/ProgramarCita";
 import Horarios from "./Front/VistasUsuario/Horarios";
 import HistoriaClinica from "./Front/VistasDoctor/Historia Clinica/HistoriaClinica";
+import NotiDoc from "./Front/VistasDoctor/NotiDoc";
+import Mensajes from "./Front/VistasDoctor/Mensajes";
+import Horario from "./Front/VistasDoctor/Horario";
 
 
 
@@ -22,6 +25,9 @@ const App = () => {
       <Routes>
         <Route path="/inicio" element={<Doctor />} />
         <Route path="/doctor-tratamiento" element={<DoctorPac />} />
+        <Route path="/Horario" element={<Horario />} />
+        <Route path="/Mensajes" element={<Mensajes/>} />
+        <Route path="/Notificacion" element={<NotiDoc/>} />
         <Route path="/factura" element={<Factura />} />
         <Route path="/quienes-somos" element={<QuienesSomos />} /> {/* Nueva ruta para QuienesSomos */}
         <Route path="/servicios" element={<Servicios />} /> {/* Nueva ruta para QuienesSomos */}
