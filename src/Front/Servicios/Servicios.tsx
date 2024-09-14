@@ -8,7 +8,7 @@ const imagenesCarrusel = [
   { src: "/src/Front/assets/img2.png", alt: "Imagen 2" },
   { src: "/src/Front/assets/img3.png", alt: "Imagen 3" },
 ];
-
+ 
 const servicios = [
   {
     especialidad: "Cardiología",
