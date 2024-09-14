@@ -1,4 +1,5 @@
 import { FaClipboard, FaCalendarAlt, FaUser, FaClock, FaPills, FaEnvelope, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
 const Horario = () => {
     return (
         <div className="flex h-screen bg-gray-100">
@@ -43,7 +44,7 @@ const Horario = () => {
                 </div>
                 <div className="absolute bottom-0 left-0 w-64 p-4">
                     <div className="flex items-center">
-                        <img src="https://placehold.co/40x40" alt="Doctor profile picture" className="rounded-full mr-3" />
+                        <img src="/src/Front/assets/Doctor.jpg" alt="Doctor profile picture" className="rounded-full mr-3" />
                         <div>
                             <p className="font-semibold">Dr Alex Montañez</p>
                             <p className="text-sm text-gray-600">Neumólogo</p>
@@ -65,9 +66,9 @@ const Horario = () => {
                         <img src="https://placehold.co/100x100" alt="Doctor profile picture" className="rounded-lg mr-4" />
                         <div>
                             <h2 className="text-xl font-bold">Dr. Emmanuel Santos</h2>
-                            <p>Hombre <span className="ml-4">Edad: 20</span></p>
-                            <p>321456789</p>
-                            <p>emmaprogamer@777.com</p>
+                            <p>Género: Hombre <span className="ml-4">Edad: 20</span></p>
+                            <p>Teléfono: <input type="text" placeholder="321456789" className="border p-1 rounded-md" /></p>
+                            <p>Email: <input type="email" placeholder="emmaprogamer@777.com" className="border p-1 rounded-md" /></p>
                         </div>
                     </div>
 
@@ -78,13 +79,13 @@ const Horario = () => {
                                 <img src="https://placehold.co/50x50" alt="Patient profile picture" className="rounded-full mr-4" />
                                 <div>
                                     <h3 className="font-semibold">Juan Nicolas Rey Vasquez</h3>
-                                    <p>Hombre <span className="ml-4">Edad: 20</span></p>
-                                    <p>Cita: 19:00</p>
+                                    <p>Género: Hombre <span className="ml-4">Edad: 20</span></p>
+                                    <p>Cita: <input type="time" value="19:00" className="border p-1 rounded-md" /></p>
                                 </div>
                             </div>
                             <div className="w-1/3">
-                                <p className="font-semibold">Motivo Consulta:</p>
-                                <div className="bg-gray-100 h-16 rounded"></div>
+                                <p className="font-semibold">Motivo de Consulta:</p>
+                                <textarea className="bg-gray-100 w-full h-16 rounded border p-2" placeholder="Escriba aquí..."></textarea>
                             </div>
                         </div>
                     ))}
