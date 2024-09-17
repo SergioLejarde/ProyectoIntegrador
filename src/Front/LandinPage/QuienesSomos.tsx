@@ -1,6 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const QuienesSomos = () => {
+  const navigate = useNavigate(); // Usado para redirigir a otras páginas
+
+  // Funciones para manejar la navegación
+  const handleServiciosClick = () => {
+    navigate("/servicios"); // Redirigir a la página de Servicios
+  };
+
+  const handleLoginClick = () => {
+    navigate("/login"); // Redirigir a la página de Login
+  };
+
   return (
     <>
       <header className="bg-blue-500 text-white p-4 relative">
@@ -12,12 +24,11 @@ const QuienesSomos = () => {
           />
         </div>
         <div className="flex justify-end pl-96 ml-96">
-          {" "}
-          {/* Añadido padding top para ajustar el espacio */}
           <nav className="flex space-x-5">
             <a
               href="#"
-              className="text-white mx-3 hover:border-b-1 hover:border-white pb-1 "
+              className="text-white mx-3 hover:border-b-1 hover:border-white pb-1"
+              onClick={handleServiciosClick}
             >
               SERVICIOS
             </a>
@@ -29,7 +40,8 @@ const QuienesSomos = () => {
             </a>
             <a
               href="#"
-              className="text-white mx-3 hover:border-b-1 hover:border-white pb-1 "
+              className="text-white mx-3 hover:border-b-1 hover:border-white pb-1"
+              onClick={handleLoginClick}
             >
               LOGIN
             </a>
@@ -191,52 +203,13 @@ const QuienesSomos = () => {
           {/* Contact Information */}
           <div className="w-full md:w-1/3 mb-6 mt-4">
             <h2 className="text-2xl font-bold mb-4">
-              <span className="text-blue-500">Datos </span>
-              <span className="text-white">de Contacto</span>
+              <span className="text-blue-500">Datos </span>de contacto
             </h2>
-            <div className="flex items-center mb-3">
-              <i className="fas fa-map-marker-alt text-2xl mr-2"></i>
-              <span>
-                Autopista Piedecuesta Kilómetro 7, Floridablanca, Santander
-              </span>
-            </div>
-            <div className="flex items-center mb-3">
-              <i className="fas fa-phone text-2xl mr-2"></i>
-              <span>+57 3143746674</span>
-            </div>
-            <div className="flex items-center mb-3">
-              <i className="fas fa-envelope text-2xl mr-2"></i>
-              <span>contacto@empresa.com</span>
-            </div>
-          </div>
-
-          {/* Business Hours and Map */}
-          <div className="w-full md:w-2/3 mb- flex flex-wrap mt-0.5">
-            {/* Business Hours */}
-            <div className="w-full md:w-1/2 mb-6 md:mb-0 p-4">
-              <h2 className="text-2xl font-bold mb-4">
-                <span className="text-blue-500">Horario </span>
-                <span className="text-white">de Atención</span>
-              </h2>
-              <ul>
-                <li>Lunes a Viernes: 8:00 AM - 6:00 PM</li>
-                <li>Sábados: 9:00 AM - 1:00 PM</li>
-                <li>Domingos: Cerrado</li>
-              </ul>
-            </div>
-            {/* Map */}
-            <div className="w-full md:w-1/2 p-4">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d126712.09153595776!2d-73.15460786133634!3d7.038305174894055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x8e6840b36653b9c5%3A0x4dcdbc55842151df!2sAutopista%20Piedecuesta%20Kil%C3%B3metro%207%2C%2C%20Floridablanca%2C%20Santander!3m2!1d7.038142!2d-73.072204!5e0!3m2!1ses-419!2sco!4v1725904032560!5m2!1ses-419!2sco"
-                width="100%"
-                height="250"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa UPB Bucaramanga"
-              ></iframe>
-            </div>
+            <ul>
+              <li className="mb-2">Teléfono: +57 123 456 7890</li>
+              <li className="mb-2">Correo: contacto@empresa.com</li>
+              <li className="mb-2">Dirección: Calle 123 #45-67, Ciudad, País</li>
+            </ul>
           </div>
         </div>
       </footer>

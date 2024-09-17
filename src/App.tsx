@@ -16,6 +16,8 @@ import HistoriaClinica from "./Front/VistasDoctor/Historia Clinica/HistoriaClini
 import NotiDoc from "./Front/VistasDoctor/NotiDoc";
 import Mensajes from "./Front/VistasDoctor/Mensajes";
 import Horario from "./Front/VistasDoctor/Horario";
+import Admin from "./Front/VistasAdmin/Admin";
+
 
 
 
@@ -37,6 +39,8 @@ const App = () => {
         <Route path="/programar-cita-usuario" element={<ProgramarCita />} /> 
         <Route path="/horarios-usuario" element={<Horarios />} /> 
         <Route path="/historia-usuario" element={<HistoriaClinica />} /> 
+        <Route path="/adminDashBoard" element={<Admin />} />
+
       </Routes>
     </Router>
   );
