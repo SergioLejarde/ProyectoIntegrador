@@ -1,13 +1,54 @@
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 
+const ProgramarCita: React.FC = () => {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    correo: '',
+    celular: '',
+    especialista: '',
+    tipoCita: '',
+    fecha: '',
+    comentarios: ''
+  });
 
-const ProgramarCita = () => {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  // Especificar el tipo de los eventos de entrada
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  // Especificar el tipo de evento del formulario
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    // Mostrar modal o realizar alguna acción con los datos
+    setModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setFormData({
+      nombre: '',
+      correo: '',
+      celular: '',
+      especialista: '',
+      tipoCita: '',
+      fecha: '',
+      comentarios: ''
+    });
+    setModalVisible(false);
+  };
+
   return (
     <div className="flex h-screen">
       <aside className="w-1/4 bg-white p-6 flex flex-col justify-between">
         <div>
           <div className="flex items-center mb-8">
             <img
-              src="https://placehold.co/50x50"
+              src="/src/Front/assets/img1.png"
               alt="Intervital Logo"
               className="mr-2"
             />
@@ -53,7 +94,7 @@ const ProgramarCita = () => {
           <hr className="my-4" />
           <div className="flex items-center">
             <img
-              src="https://placehold.co/50x50"
+              src="/src/Front/assets/img1.png"
               alt="User Profile"
               className="rounded-full mr-2"
             />
@@ -64,40 +105,74 @@ const ProgramarCita = () => {
       <main className="w-3/4 bg-gray-200 p-8">
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-8">AGENDAR CITA</h2>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <input
               type="text"
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleInputChange}
               placeholder="Nombre"
               className="w-full p-4 rounded-full bg-gray-300"
+              required
             />
             <input
               type="email"
+              name="correo"
+              value={formData.correo}
+              onChange={handleInputChange}
               placeholder="Correo Electronico"
               className="w-full p-4 rounded-full bg-gray-300"
+              required
             />
             <input
               type="tel"
+              name="celular"
+              value={formData.celular}
+              onChange={handleInputChange}
               placeholder="Numero Celular"
               className="w-full p-4 rounded-full bg-gray-300"
+              required
             />
             <div className="relative">
-              <select className="w-full p-4 rounded-full bg-gray-300 appearance-none">
-                <option>Especialista</option>
+              <select
+                name="especialista"
+                value={formData.especialista}
+                onChange={handleInputChange}
+                className="w-full p-4 rounded-full bg-gray-300 appearance-none"
+                required
+              >
+                <option value="">Especialista</option>
+                <option value="Dr. Lopez">Dr. Lopez</option>
+                <option value="Dra. Martinez">Dra. Martinez</option>
               </select>
               <i className="fas fa-chevron-down absolute right-4 top-4 text-black"></i>
             </div>
             <div className="relative">
-              <select className="w-full p-4 rounded-full bg-gray-300 appearance-none">
-                <option>Tipo Cita</option>
+              <select
+                name="tipoCita"
+                value={formData.tipoCita}
+                onChange={handleInputChange}
+                className="w-full p-4 rounded-full bg-gray-300 appearance-none"
+                required
+              >
+                <option value="">Tipo Cita</option>
+                <option value="Consulta General">Consulta General</option>
+                <option value="Especialidad">Especialidad</option>
               </select>
               <i className="fas fa-chevron-down absolute right-4 top-4 text-black"></i>
             </div>
             <input
               type="date"
-              placeholder="Fecha"
+              name="fecha"
+              value={formData.fecha}
+              onChange={handleInputChange}
               className="w-full p-4 rounded-full bg-gray-300"
+              required
             />
             <textarea
+              name="comentarios"
+              value={formData.comentarios}
+              onChange={handleInputChange}
               placeholder="Comentarios"
               className="w-full p-4 rounded-lg bg-gray-300 h-32"
             ></textarea>
@@ -110,6 +185,7 @@ const ProgramarCita = () => {
               </button>
               <button
                 type="button"
+                onClick={handleCancel}
                 className="w-full p-4 rounded-full bg-red-500 text-white"
               >
                 Cancelar
@@ -117,6 +193,26 @@ const ProgramarCita = () => {
             </div>
           </form>
         </div>
+        {isModalVisible && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white p-8 rounded-lg shadow-md w-1/3">
+              <h2 className="text-xl font-bold mb-4">Detalles de la cita</h2>
+              <p><strong>Nombre:</strong> {formData.nombre}</p>
+              <p><strong>Correo:</strong> {formData.correo}</p>
+              <p><strong>Celular:</strong> {formData.celular}</p>
+              <p><strong>Especialista:</strong> {formData.especialista}</p>
+              <p><strong>Tipo de Cita:</strong> {formData.tipoCita}</p>
+              <p><strong>Fecha:</strong> {formData.fecha}</p>
+              <p><strong>Comentarios:</strong> {formData.comentarios}</p>
+              <button
+                onClick={() => setModalVisible(false)}
+                className="mt-4 p-4 rounded-full bg-blue-500 text-white w-full"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
