@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom'; // Cambiado a useNavigate
 
 const ProgramarCita: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const ProgramarCita: React.FC = () => {
   });
 
   const [isModalVisible, setModalVisible] = useState(false);
+  const navigate = useNavigate(); // Cambiado a useNavigate
 
   // Especificar el tipo de los eventos de entrada
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -42,6 +44,10 @@ const ProgramarCita: React.FC = () => {
     setModalVisible(false);
   };
 
+  const navigateTo = (path: string) => {
+    navigate(path); // Cambiado a navigate
+  };
+
   return (
     <div className="flex h-screen">
       <aside className="w-1/4 bg-white p-6 flex flex-col justify-between">
@@ -56,37 +62,55 @@ const ProgramarCita: React.FC = () => {
           <nav className="mb-8">
             <ul>
               <li className="mb-4">
-                <button className="flex items-center text-gray-600 w-full text-left p-2 rounded hover:bg-gray-100">
+                <button
+                  onClick={() => navigateTo('/agenda')}
+                  className="flex items-center text-gray-600 w-full text-left p-2 rounded hover:bg-gray-100"
+                >
                   <i className="fas fa-calendar-alt mr-2"></i> Agenda
                 </button>
               </li>
               <li className="mb-4">
-                <button className="flex items-center text-teal-500 w-full text-left p-2 rounded hover:bg-gray-100">
+                <button
+                  onClick={() => navigateTo('/programar-cita')}
+                  className="flex items-center text-teal-500 w-full text-left p-2 rounded hover:bg-gray-100"
+                >
                   <i className="fas fa-calendar-plus mr-2"></i> Programar Cita
                 </button>
               </li>
               <li className="mb-4">
-                <button className="flex items-center text-gray-600 w-full text-left p-2 rounded hover:bg-gray-100">
+                <button
+                  onClick={() => navigateTo('/horarios')}
+                  className="flex items-center text-gray-600 w-full text-left p-2 rounded hover:bg-gray-100"
+                >
                   <i className="fas fa-clock mr-2"></i> Horarios
                 </button>
               </li>
               <li className="mb-4">
-                <button className="flex items-center text-gray-600 w-full text-left p-2 rounded hover:bg-gray-100">
+                <button
+                  onClick={() => navigateTo('/historial')}
+                  className="flex items-center text-gray-600 w-full text-left p-2 rounded hover:bg-gray-100"
+                >
                   <i className="fas fa-history mr-2"></i> Historial
                 </button>
               </li>
             </ul>
           </nav>
         </div>
-        <div className="mt-80">
+        <div>
           <ul>
             <li className="mb-4">
-              <button className="flex items-center text-gray-600 w-full text-left p-2 rounded hover:bg-gray-100">
+              <button
+                onClick={() => navigateTo('/notificaciones')}
+                className="flex items-center text-gray-600 w-full text-left p-2 rounded hover:bg-gray-100"
+              >
                 <i className="fas fa-bell mr-2"></i> Notificaciones
               </button>
             </li>
             <li className="mb-4">
-              <button className="flex items-center text-gray-600 w-full text-left p-2 rounded hover:bg-gray-100">
+              <button
+                onClick={() => navigateTo('/ajustes')}
+                className="flex items-center text-gray-600 w-full text-left p-2 rounded hover:bg-gray-100"
+              >
                 <i className="fas fa-cog mr-2"></i> Ajustes
               </button>
             </li>
@@ -120,7 +144,7 @@ const ProgramarCita: React.FC = () => {
               name="correo"
               value={formData.correo}
               onChange={handleInputChange}
-              placeholder="Correo Electronico"
+              placeholder="Correo Electrónico"
               className="w-full p-4 rounded-full bg-gray-300"
               required
             />
@@ -129,7 +153,7 @@ const ProgramarCita: React.FC = () => {
               name="celular"
               value={formData.celular}
               onChange={handleInputChange}
-              placeholder="Numero Celular"
+              placeholder="Número Celular"
               className="w-full p-4 rounded-full bg-gray-300"
               required
             />

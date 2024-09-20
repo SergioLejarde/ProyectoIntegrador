@@ -27,7 +27,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/inicio" element={<Doctor />} />
-        <Route path="/doctor-tratamiento" element={<DoctorPac />} />
+        <Route path="/doctor-tratamiento" element={<DoctorPac/>} />
         <Route path="/Horario" element={<Horario />} />
         <Route path="/Mensajes" element={<Mensajes/>} />
         <Route path="/Notificacion" element={<NotiDoc/>} />

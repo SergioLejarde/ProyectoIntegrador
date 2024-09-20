@@ -36,7 +36,7 @@ const Mensajes: React.FC = () => {
     { icon: 'far fa-envelope', text: 'Mensajes', active: true, action: () => setSidebarContent(null) },
   ];
 
-  const [chats, setChats] = useState<Chat[]>([
+  const [chats] = useState<Chat[]>([
     { id: 1, name: 'Johanna Naranjo', lastMessage: 'Ha enviado un archivo', pinned: true },
     ...Array.from({ length: 14 }, (_, i) => ({
       id: i + 2,
@@ -182,46 +182,35 @@ const Mensajes: React.FC = () => {
                   <>
                     <div className="bg-white border-b border-gray-200 p-4 flex justify-between items-center">
                       <div className="flex items-center">
-                        <img src="/src/Front/assets/img1.png" alt={`Profile picture of ${chats.find(c => c.id === activeChat)?.name}`} className="w-10 h-10 rounded-full mr-3" />
-                        <h2 className="font-medium">{chats.find(c => c.id === activeChat)?.name}</h2>
+                        <img src="/src/Front/assets/img1.png" alt={`Profile picture`} className="w-10 h-10 rounded-full mr-3" />
+                        <p className="font-medium">{chats.find(chat => chat.id === activeChat)?.name}</p>
                       </div>
-                      <div className="flex items-center">
-                        <button className="mx-2 text-gray-600">Chat</button>
-                        <button className="mx-2 text-gray-600">Compartido</button>
-                        <button className="mx-2 text-gray-600"><i className="far fa-clock"></i></button>
-                        <button className="mx-2 text-gray-600"><i className="fas fa-cog"></i></button>
-                        <button className="mx-2 text-gray-600">...</button>
-                      </div>
+                      <button className="text-gray-600">...</button>
                     </div>
                     <div className="flex-1 overflow-y-auto p-4">
-                      {messages[activeChat]?.map((msg) => (
-                        <div key={msg.id} className={`mb-4 ${msg.sender === 'doctor' ? 'text-right' : 'text-left'}`}>
-                          <div className={`inline-block p-2 rounded-lg ${msg.sender === 'doctor' ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}>
-                            {msg.text}
-                          </div>
-                          <div className="text-xs text-gray-500 mt-1">
-                            {msg.timestamp.toLocaleTimeString()}
+                      {messages[activeChat]?.map((message, index) => (
+                        <div key={index} className={`mb-4 ${message.sender === 'doctor' ? 'text-right' : ''}`}>
+                          <div className={`inline-block p-2 rounded-lg ${message.sender === 'doctor' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}>
+                            <p>{message.text}</p>
+                            <p className="text-xs mt-1">{message.timestamp.toLocaleTimeString()}</p>
                           </div>
                         </div>
                       ))}
                     </div>
-                    <div className="bg-white p-4">
-                      <div className="flex">
-                        <input
-                          type="text"
-                          placeholder="Escriba un mensaje"
-                          value={currentMessage}
-                          onChange={(e: ChangeEvent<HTMLInputElement>) => setCurrentMessage(e.target.value)}
-                          onKeyPress={(e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && handleSendMessage()}
-                          className="flex-1 p-2 rounded-l-md border border-gray-300"
-                        />
-                        <button onClick={handleSendMessage} className="bg-blue-500 text-white px-4 py-2 rounded-r-md">Enviar</button>
-                      </div>
+                    <div className="bg-white border-t border-gray-200 p-4">
+                      <input
+                        type="text"
+                        placeholder="Escribe un mensaje"
+                        value={currentMessage}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setCurrentMessage(e.target.value)}
+                        onKeyPress={(e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && handleSendMessage()}
+                        className="w-full p-2 rounded-md border border-gray-400"
+                      />
                     </div>
                   </>
                 ) : (
-                  <div className="flex-1 flex items-center justify-center">
-                    <p className="text-gray-500">Seleccione un chat para comenzar</p>
+                  <div className="flex-1 flex items-center justify-center text-gray-500">
+                    <p>Selecciona un chat para ver los mensajes</p>
                   </div>
                 )}
               </div>
